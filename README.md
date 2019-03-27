@@ -1,7 +1,7 @@
 # AboutArchitecture
  **为了学习Java项目架构内容，故开始创建了关于架构的项目**
 ---
-## 1、[datastruts](#DataStructure/README.md)
+## 1、[datastruts](/DataStructure/README.md)
 
   app.java 主要熟悉一下Jdk 8 的一些新特性
   #TODO 之后开始数据结构和常用的算法实例
