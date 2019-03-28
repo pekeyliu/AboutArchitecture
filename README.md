@@ -1,8 +1,9 @@
 # AboutArchitecture
  **为了学习Java项目架构内容，故开始创建了关于架构的项目**
 ---
-## 
-> **[datastruts](/DataStructure/README.md)**
 
++ **[datastruts:数据结构](/DataStructure/README.md)**
+  + 队列
+  + Java Set 集合详解
 
 
