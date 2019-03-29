@@ -17,6 +17,10 @@ public class BinaryTree {
         root = new TreeNode(1, "rootNode(A)");
     }
 
+    public BinaryTree(TreeNode root){
+        this.root = new TreeNode(root.getKey(), root.getData());
+    }
+
     /**
      * 创建一棵二叉树
      * <pre>
@@ -34,11 +38,11 @@ public class BinaryTree {
         TreeNode newNodeD = new TreeNode(4, "D");
         TreeNode newNodeE = new TreeNode(5, "E");
         TreeNode newNodeF = new TreeNode(6, "F");
-        root.leftChild = newNodeB;
-        root.rightChild = newNodeC;
-        newNodeB.leftChild = newNodeD;
-        newNodeB.rightChild = newNodeE;
-        newNodeC.rightChild = newNodeF;
+        root.setLeftChild(newNodeB);
+        root.setRightChild(newNodeC);
+        newNodeB.setLeftChild(newNodeD);
+        newNodeB.setRightChild(newNodeE);
+        newNodeC.setRightChild(newNodeF);
     }
 
 
@@ -61,8 +65,8 @@ public class BinaryTree {
         if (subTree == null)
             return 0;//递归结束：空树高度为0
         else {
-            int i = height(subTree.leftChild);
-            int j = height(subTree.rightChild);
+            int i = height(subTree.getLeftChild());
+            int j = height(subTree.getRightChild());
             return (i < j) ? (j + 1) : (i + 1);
         }
     }
@@ -71,8 +75,8 @@ public class BinaryTree {
         if (subTree == null) {
             return 0;
         } else {
-            return 1 + size(subTree.leftChild)
-                    + size(subTree.rightChild);
+            return 1 + size(subTree.getLeftChild())
+                    + size(subTree.getRightChild());
         }
     }
 
@@ -84,25 +88,25 @@ public class BinaryTree {
     public TreeNode parent(TreeNode subTree, TreeNode element) {
         if (subTree == null)
             return null;
-        if (subTree.leftChild == element || subTree.rightChild == element)
+        if (subTree.getLeftChild() == element || subTree.getRightChild() == element)
             //返回父结点地址
             return subTree;
         TreeNode p;
         //现在左子树中找，如果左子树中没有找到，才到右子树去找
-        if ((p = parent(subTree.leftChild, element)) != null)
+        if ((p = parent(subTree.getLeftChild(), element)) != null)
             //递归在左子树中搜索
             return p;
         else
             //递归在右子树中搜索
-            return parent(subTree.rightChild, element);
+            return parent(subTree.getRightChild(), element);
     }
 
     public TreeNode getLeftChildNode(TreeNode element) {
-        return (element != null) ? element.leftChild : null;
+        return (element != null) ? element.getLeftChild() : null;
     }
 
     public TreeNode getRightChildNode(TreeNode element) {
-        return (element != null) ? element.rightChild : null;
+        return (element != null) ? element.getRightChild() : null;
     }
 
     public TreeNode getRoot() {
@@ -115,44 +119,44 @@ public class BinaryTree {
         //删除根为subTree的子树
         if (subTree != null) {
             //删除左子树
-            destroy(subTree.leftChild);
+            destroy(subTree.getLeftChild());
             //删除右子树
-            destroy(subTree.rightChild);
+            destroy(subTree.getRightChild());
             //删除根结点
             subTree = null;
         }
     }
 
     public void traverse(TreeNode subTree) {
-        System.out.println("key:" + subTree.key + "--name:" + subTree.data);
+        System.out.println("key:" + subTree.getKey() + "--name:" + subTree.getData());
         ;
-        traverse(subTree.leftChild);
-        traverse(subTree.rightChild);
+        traverse(subTree.getLeftChild());
+        traverse(subTree.getRightChild());
     }
 
     //前序遍历
     public void preOrder(TreeNode subTree) {
         if (subTree != null) {
             visted(subTree);
-            preOrder(subTree.leftChild);
-            preOrder(subTree.rightChild);
+            preOrder(subTree.getLeftChild());
+            preOrder(subTree.getRightChild());
         }
     }
 
     //中序遍历
     public void inOrder(TreeNode subTree) {
         if (subTree != null) {
-            inOrder(subTree.leftChild);
+            inOrder(subTree.getLeftChild());
             visted(subTree);
-            inOrder(subTree.rightChild);
+            inOrder(subTree.getRightChild());
         }
     }
 
     //后续遍历
     public void postOrder(TreeNode subTree) {
         if (subTree != null) {
-            postOrder(subTree.leftChild);
-            postOrder(subTree.rightChild);
+            postOrder(subTree.getLeftChild());
+            postOrder(subTree.getRightChild());
             visted(subTree);
         }
     }
@@ -165,45 +169,45 @@ public class BinaryTree {
             while (node != null) {
                 visted(node);
                 stack.push(node);
-                node = node.leftChild;
+                node = node.getLeftChild();
             }
             while (stack.size() > 0) {
                 node = stack.pop();
-                node = node.rightChild;
+                node = node.getRightChild();
             }
         }
     }
 
     //中序遍历的非递归实现
     public void nonRecInOrder(TreeNode p) {
-        Stack<TreeNode> stack = new Stack<BinaryTree.TreeNode>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode node = p;
         while (node != null || stack.size() > 0) {
             //存在左子树
             while (node != null) {
                 stack.push(node);
-                node = node.leftChild;
+                node = node.getLeftChild();
             }
             //栈非空
             if (stack.size() > 0) {
                 node = stack.pop();
                 visted(node);
-                node = node.rightChild;
+                node = node.getRightChild();
             }
         }
     }
 
     //后序遍历的非递归实现
     public void noRecPostOrder(TreeNode p) {
-        Stack<TreeNode> stack = new Stack<BinaryTree.TreeNode>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode node = p;
         while (p != null) {
             //左子树入栈
-            for (; p.leftChild != null; p = p.leftChild) {
+            for (; p.getLeftChild() != null; p = p.getLeftChild()) {
                 stack.push(p);
             }
             //当前结点无右子树或右子树已经输出
-            while (p != null && (p.rightChild == null || p.rightChild == node)) {
+            while (p != null && (p.getRightChild() == null || p.getRightChild() == node)) {
                 visted(p);
                 //纪录上一个已输出结点
                 node = p;
@@ -213,44 +217,13 @@ public class BinaryTree {
             }
             //处理右子树
             stack.push(p);
-            p = p.rightChild;
+            p = p.getRightChild();
         }
     }
 
     public void visted(TreeNode subTree) {
-        subTree.isVisted = true;
-        System.out.println("key:" + subTree.key + "--name:" + subTree.data);
-        ;
-    }
-
-
-    /**
-     * 二叉树的节点数据结构
-     *
-     * @author WWX
-     */
-    private class TreeNode {
-        private int key = 0;
-        private String data = null;
-        private boolean isVisted = false;
-        private TreeNode leftChild = null;
-        private TreeNode rightChild = null;
-
-        public TreeNode() {
-        }
-
-        /**
-         * @param key  层序编码
-         * @param data 数据域
-         */
-        public TreeNode(int key, String data) {
-            this.key = key;
-            this.data = data;
-            this.leftChild = null;
-            this.rightChild = null;
-        }
-
-
+        subTree.setVisted(true);
+        System.out.println("key:" + subTree.getKey() + "--name:" + subTree.getData());
     }
 
 
