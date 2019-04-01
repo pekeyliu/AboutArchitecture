@@ -7,6 +7,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 非阻塞队列：ConcurrentLinkedQueue(无界线程安全)，采用CAS机制（compareAndSwapObject原子操作）。
+ * 阻塞队列：ArrayBlockingQueue(有界)、LinkedBlockingQueue（无界）、
+ * DelayQueue、PriorityBlockingQueue，采用锁机制；使用 ReentrantLock 锁。
+ *
+ *
  * <h2>12306 售票</h2>
  * 通过ArrayBlockingQueue队列模拟（FIFO 先进先出的数据结构），买卖票的情况</br>
  * <li>put()向队列中增加元素，当元素满了之后会阻塞插入</li>
