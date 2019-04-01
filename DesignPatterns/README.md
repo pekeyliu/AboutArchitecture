@@ -21,3 +21,12 @@
 
 6、合成复用原则（Composite Reuse Principle）
 > 原则是尽量使用合成/聚合的方式，而不是使用继承。
+
+---
+
++ 1、工厂设计模式
+> 就是建立一个工厂类，对实现了同一接口的一些类进行实例的创建。首先看下关系图：
+![](https://github.com/pekeyliu/AboutArchitecture/blob/master/DesignPatterns/img/factory-method.png)
++ 2、多工厂设计模式
+> 是对普通工厂方法模式的改进，在普通工厂方法模式中，如果传递的字符串出错，则不能正确创建对象，而多个工厂方法模式是提供多个工厂方法，分别创建对象。关系图：
+![](https://github.com/pekeyliu/AboutArchitecture/blob/master/DesignPatterns/img/many-factory-method.jpeg)
