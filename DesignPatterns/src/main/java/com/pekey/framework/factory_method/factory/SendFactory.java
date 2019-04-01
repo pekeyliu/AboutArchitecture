@@ -1,7 +1,8 @@
-package com.pekey.framework.FactoryMethod;
+package com.pekey.framework.factory_method.factory;
 
-import com.pekey.framework.FactoryMethod.impl.MailSender;
-import com.pekey.framework.FactoryMethod.impl.WeChatSender;
+import com.pekey.framework.factory_method.sendMassege.Sender;
+import com.pekey.framework.factory_method.sendMassege.impl.MailSender;
+import com.pekey.framework.factory_method.sendMassege.impl.WeChatSender;
 
 /**
  * 创建发送信息工厂

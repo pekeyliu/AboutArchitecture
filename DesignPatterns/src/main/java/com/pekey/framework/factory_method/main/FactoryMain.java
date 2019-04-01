@@ -1,7 +1,12 @@
-package com.pekey.framework.FactoryMethod;
+package com.pekey.framework.factory_method.main;
+
+import com.pekey.framework.factory_method.factory.SendFactory;
+import com.pekey.framework.factory_method.sendMassege.Sender;
 
 /**
- * 工厂模式测试方法
+ * 工厂模式测试方法<br />
+ * 优势为
+ *
  */
 public class FactoryMain {
     public static void main(String[] args) {

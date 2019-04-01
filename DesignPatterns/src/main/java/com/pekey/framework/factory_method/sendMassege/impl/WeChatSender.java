@@ -1,6 +1,6 @@
-package com.pekey.framework.FactoryMethod.impl;
+package com.pekey.framework.factory_method.sendMassege.impl;
 
-import com.pekey.framework.FactoryMethod.Sender;
+import com.pekey.framework.factory_method.sendMassege.Sender;
 
 /**
  * 通过微信发送信息

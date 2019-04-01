@@ -1,4 +1,4 @@
-package com.pekey.framework.FactoryMethod;
+package com.pekey.framework.factory_method.sendMassege;
 
 /**
  * 邮件发送接口
