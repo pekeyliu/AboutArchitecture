@@ -3,6 +3,8 @@
 ---
 
 + **[datastruts:数据结构](/DataStructure/README.md)**
++ **[Algorithms:算法](/Algorithms/README.md)**
++ **[DesignPatterns:设计模式](/DesignPatterns/README.md)**
 
  
 
