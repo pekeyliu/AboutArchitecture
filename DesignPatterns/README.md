@@ -1,2 +1,2 @@
 ## 设计模式
-![](/img/design-patterns.jpg)
+![](https://github.com/pekeyliu/AboutArchitecture/edit/master/DesignPatterns/img/design-patterns.jpg)
