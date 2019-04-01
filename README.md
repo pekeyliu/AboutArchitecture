@@ -1,5 +1,5 @@
 # AboutArchitecture
- **为了学习Java项目架构内容，故开始创建了关于架构的项目**
+ **本项目意在整理Java项目架构相关内容；包括Java的数据结构、算法、并发、分布式、微服务、全栈等信息。**
 ---
 
 + **[datastruts:数据结构](/DataStructure/README.md)**
