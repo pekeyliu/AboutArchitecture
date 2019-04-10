@@ -46,34 +46,80 @@
         a[j+1] = temp;
     }
 ```
+> 算法图解<br />
+![](https://github.com/pekeyliu/AboutArchitecture/blob/master/Algorithms/img/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F.gif)
 
 + 二分法插入排序
 > 基本思想：二分法插入排序的思想和直接插入一样，只是找合适的插入位置的方式不同，这里是按二分法找到合适的位置，可以减少比较的次数。核心代码如下：
 
 ```java
-        for (int i = 0; i < a.length; i++) {
-            int temp = a[i];
-            int left = 0;
-            int right = i - 1;
-            int mid = 0;
-            //通过二分法来快速查找temp元素应插入的位置
-            while (left <= right){
-                mid = (left + right)/2;
-                if (temp < a[mid]){
-                    right = mid - 1;
-                }else {
-                    left = mid + 1;
-                }
+    //二分法排序
+    for (int i = 0; i < a.length; i++) {
+        int temp = a[i];
+        int left = 0;
+        int right = i - 1;
+        int mid = 0;
+        //通过二分法来快速查找temp元素应插入的位置
+        while (left <= right){
+            mid = (left + right)/2;
+            if (temp < a[mid]){
+                right = mid - 1;
+            }else {
+                left = mid + 1;
             }
-            //将大于temp元素的值统一向后移动一位
-            for (int j = i-1; j >= left ; j--) {
-                a[j+1] = a[j];
-            }
-            //在查找到合适的位置插入temp元素
-            if (left != temp){
-                a[left] = temp;
-            }
-
         }
-
+        //将大于temp元素的值统一向后移动一位
+        for (int j = i-1; j >= left ; j--) {
+            a[j+1] = a[j];
+        }
+        //在查找到合适的位置插入temp元素
+        if (left != temp){
+            a[left] = temp;
+        }
+    }
 ```
++ 希尔排序
+> 基本思想：先取一个小于n的整数d1作为第一个增量，把文件的全部记录分成d1个组。所有距离为d1的倍数的记录放在同一个组中。先在各组内进行直接插入排序；然后，取第二个增量d2<br/>
+```java
+    // 希尔排序
+    int d = a.length;
+    while (true) {
+        d = d / 3;  //3个分为一组
+        for (int x = 0; x < d; x++) {
+            for (int i = x + d; i < a.length; i = i + d) {
+                int temp = a[i];
+                int j;
+                for (j = i - d; j >= 0 && a[j] > temp; j = j - d) {
+                    a[j + d] = a[j];
+                }
+                a[j + d] = temp;
+            }
+        }
+        if (d == 1) {
+            break;
+        }
+    }
+```
++ 直接选择排序
+> 基本思想：在要排序的一组数中，选出最小的一个数与第一个位置的数交换；然后在剩下的数当中再找最小的与第二个位置的数交换，如此循环到倒数第二个数和最后一个数比较为止。
+```java
+    // 直接选择排序
+    for (int i = 0; i < a.length; i++) {
+        int min = a[i];
+        int n = i; // 最小数的索引
+        for (int j = i + 1; j < a.length; j++) {
+            if (a[j] < min) { // 找出最小的数
+                min = a[j];
+                n = j;
+            }
+        }
+        a[n] = a[i];
+        a[i] = min;
+    }
+```
+
++ 堆排序
+> 堆排序是一种树形选择排序，是对直接选择排序的有效改进。<br />
+堆的定义下：具有n个元素的序列 （h1,h2,…,hn),当且仅当满足（hi>=h2i,hi>=2i+1）或（hi<=h2i,hi<=2i+1） (i=1,2,…,n/2)时称之为堆。在这里只讨论满足前者条件的堆。由堆的定义可以看出，堆顶元素（即第一个元素）必为最大项（大顶堆）。完全二叉树可以很直观地表示堆的结构。堆顶为根，其它为左子树、右子树。<br />
+思想：初始时把要排序的数的序列看作是一棵顺序存储的二叉树，调整它们的存储序，使之成为一个堆，这时堆的根节点的数最大。然后将根节点与堆的最后一个节点交换。然后对前面(n-1)个数重新调整使之成为堆。依此类推，直到只有两个节点的堆，并对它们作交换，最后得到有n个节点的有序序列。从算法描述来看，堆排序需要两个过程，一是建立堆，二是堆顶与堆的最后一个元素交换位置。所以堆排序有两个函数组成。一是建堆的渗透函数，二是反复调用渗透函数实现排序的函数。
+
