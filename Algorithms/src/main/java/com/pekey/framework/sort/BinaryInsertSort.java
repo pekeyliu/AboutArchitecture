@@ -1,5 +1,8 @@
 package com.pekey.framework.sort;
 
+/**
+ * 二分法排序
+ */
 public class BinaryInsertSort {
     public static void main(String[] args) {
         int[] a = { 49, 38, 65, 97, 176, 213, 227, 49, 78, 34, 12, 164, 11, 18, 1 };
