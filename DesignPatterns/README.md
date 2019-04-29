@@ -202,4 +202,4 @@
 >> Context类是一个上下文环境类，Plus和Minus分别是用来计算的实现 <br />
 基本就这样，解释器模式用来做各种各样的解释器，如正则表达式等的解释器等等！
 
-[原文里连接](#http://blog.csdn.net/zhangerqing)
+[原文连接]:http://blog.csdn.net/zhangerqing
